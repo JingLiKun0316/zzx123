@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" id="data">
+	<button onclick="saveFn()">保存</button>
+	<script>
+		function saveFn(){
+			var data = document.getElementById("data").value;
+			localStorage.setItem("data",data);
+		}
+	</script>
+</body>
+</html>

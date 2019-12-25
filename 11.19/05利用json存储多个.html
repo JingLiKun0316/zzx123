@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<button id="btn">存储</button>
+	<button id="btn1">获取</button>
+	<script>
+		var btn = document.getElementById("btn");
+		var btn1 = document.getElementById("btn1");
+		var json = {"name":"zx","age":18,"sex":"女"};
+		btn.onclick = function(){
+			localStorage.setItem("user",JSON.stringify(json));
+		}
+		btn1.onclick = function(){
+			console.log(localStorage.getItem("user"));
+			// 将json数组转为json字符串
+			// var data = JSON.parse(localStorage.getItem("user"));
+			var data1 = eval("("+localStorage.getItem("user")+")");
+			console.log(data1.sex);
+		}
+	</script>
+</body>
+</html>
