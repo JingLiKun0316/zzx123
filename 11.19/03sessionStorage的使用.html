@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<button id="btn">设置</button>
+	<button id="btn1">获取</button>
+	<button id="btn2">删除指定</button>
+	<button id="btn3">删除全部</button>
+	<p id="msg"></p>
+
+	<script>
+		function $(id){
+			return document.getElementById(id);
+		}
+		// 先判断浏览器是否支持localStorage
+		console.log(window);
+		if (window.sessionStorage) {
+			// 设置添加
+			$("btn").onclick = function(){
+				sessionStorage.setItem("name","zx");
+				sessionStorage.setItem("age","18");
+				sessionStorage.setItem("sex","女");
+			}
+			// 获取查找
+			$("btn1").onclick = function(){
+				sessionStorage.getItem("name");
+				$("msg").innerHTML = "name所对应的值：" + sessionStorage.getItem("name")+"一共存储了："+sessionStorage.length+"条";
+			}
+			// 删除指定数据
+			$("btn2").onclick = function(){
+				sessionStorage.removeItem("name");
+			}
+			// 删除全部
+			$("btn3").onclick = function(){
+				sessionStorage.clear();
+			}
+		}else{
+			alert("浏览器不支持");
+		}
+	</script>
+</body>
+</html>

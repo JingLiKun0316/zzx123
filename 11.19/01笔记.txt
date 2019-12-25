@@ -1,0 +1,90 @@
+浏览器的本地存储：
+	方式：Local Storage****
+		  Session Storage**
+		  IndexedDB*
+		  Web SQL*
+		  Cookies**
+
+	1. Local Storage: 永久存储，只要不删除数据，会一直存储在浏览器当中
+					使用方法：
+						setItem("key",value)   设置
+						getItem("key")   	   获取
+						localStorage.length    获取总数
+						removeItem("key")      删除指定数据
+						clear()                删除全部
+	2. Session Storage：临时性存储，会话期间存在，窗口一关闭就消失了
+					使用方法：
+						setItem("key",value)     设置
+						getItem("key")   	   	 获取
+						SessionStorage.length    获取总数
+						removeItem("key")        删除指定数据
+						clear()                  删除全部
+	3. 存储事件：storage(存储数据发生变化的时候触发) 同一域，运行于服务器
+
+
+	4. cookie，localStorage，sessionStorage的区别
+		4.1：都可以将数据保存在浏览器端
+		4.2区别：
+			4.2.1：存储大小：
+				cookie存储数据不能超过4kb，每次的http请求都可以携带cookie，所以cookie比较适合保存很小的数据，如
+					标识用户.
+				localStorage和sessionStorage可以存储5M
+			4.2.2：数据有效期
+				sessionStorage只在浏览器会话期间存在，
+				localStorage始终有效，可用作持久数据，
+				cookie在设置的有效时间内一直有效。
+			4.2.3：作用域：
+				sessionStorage不能跨页面使用
+				localStorage所有同源窗口都可以共享
+				cookie也是所有同源窗口都可以共享
+			4.2.4：使用效果上不同：
+				cookie可以再前端和服务器端来回传递，还可以指定保存路径
+				sessionStorage和localStorage不会自动将数据发生给服务器，仅仅保存在本地
+
+
+关于安全性：
+	不是所有的数据都适合使用cookie，localStorage和sessionStorage，因为它们都是保存在浏览器端，可能会被篡改，所以不要使用它们保存敏感性的数据
+
+
+
+indexDB,webSQL
+
+
+二. 离线缓存
+	基本概念：允许用户在脱机的时候仍能与网页进行交互
+	2.1：什么是离线的web应用程序：
+		客户端本地与web应用程序的服务器没有建立连接的时候，也能正常在客户端访问应用程序.
+	2.2：什么是本地缓存，与浏览器缓存的区别：
+		本地缓存是为整个web应用程序服务，浏览器是服务于单个网页
+	2.3：网页缓存不安全也不可靠：
+		浏览器不能清楚的知道缓存了哪些网页，以及网页上的那些资源缓存了，而本地缓存可以控制对那些内容进行缓存
+三. h5提供新的缓存对象：application    cache来实现缓存
+	优势：
+		离线缓存
+		提升页面的载入速度
+		降低服务器的压力
+
+
+
+	使用缓存三点：
+		第一步：给html标签添加manifest属性，属性值.manifest后缀的文件
+			manifest后缀的文件：是文本文件(缓存配置文件)，通过它告诉浏览器哪些内容需要缓存(以及不缓存).
+
+		CACHE MANIFEST   此选项后列出的文件将在网页首页加载后进行缓存
+		*：注释
+		#Cache Manifest v1.0
+
+		指定缓存内容
+		CACHE:
+		index.css
+		index.js
+		timg.jpg
+
+		指定不被缓存的文件
+		*：指代其它所有文件资源
+		NETWORK:
+		*
+
+		缓存失败加载的页面
+		FALLBACK:
+		/404.html

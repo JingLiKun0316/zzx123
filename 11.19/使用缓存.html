@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" manifest="缓存.manifest">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="index.css">
+</head>
+<body>
+	<img src="timg.jpg" alt="">
+	<p id="msg">网页内容</p>
+
+	<script src="index.js"></script>
+	<script>
+		console.log(applicationCache.status);
+
+		0:为缓存
+		1:空闲(缓存为最新状态)
+		2:检查中
+		3:下载中
+		4:更新就绪
+		5:缓存过期
+
+		验证：通过缓存事件
+	</script>
+</body>
+</html>
